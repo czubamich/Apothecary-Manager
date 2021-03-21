@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApothecaryManager.App", "Apothecary-Manager\ApothecaryManager.App.csproj", "{60470A4F-B218-40AC-945D-055280D96A01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApothecaryManager.WPF", "Apothecary-Manager\ApothecaryManager.WPF.csproj", "{60470A4F-B218-40AC-945D-055280D96A01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApothecaryManager.Data", "ApothecaryManager.Data\ApothecaryManager.Data.csproj", "{24ADDBB3-3DEE-4EB0-94CB-D8C6814FF667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApothecaryManager.Tests", "ApothecaryManager.Tests\ApothecaryManager.Tests.csproj", "{1F681BB6-84D1-4552-91E5-9CBE91819D61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApothecaryManager.Tests", "ApothecaryManager.Tests\ApothecaryManager.Tests.csproj", "{ABA305C9-5D57-4AE2-B626-F48743E99381}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{24ADDBB3-3DEE-4EB0-94CB-D8C6814FF667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24ADDBB3-3DEE-4EB0-94CB-D8C6814FF667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24ADDBB3-3DEE-4EB0-94CB-D8C6814FF667}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F681BB6-84D1-4552-91E5-9CBE91819D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F681BB6-84D1-4552-91E5-9CBE91819D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F681BB6-84D1-4552-91E5-9CBE91819D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F681BB6-84D1-4552-91E5-9CBE91819D61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA305C9-5D57-4AE2-B626-F48743E99381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA305C9-5D57-4AE2-B626-F48743E99381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA305C9-5D57-4AE2-B626-F48743E99381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA305C9-5D57-4AE2-B626-F48743E99381}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
