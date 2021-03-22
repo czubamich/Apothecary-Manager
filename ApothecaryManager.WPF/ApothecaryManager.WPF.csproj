@@ -4,6 +4,13 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <PackageId>ApothecaryManager</PackageId>
+    <Version>0.0.0</Version>
+    <Authors>Michael Czuba, Bartosz Bożyczko</Authors>
+    <Company>IiAM Gang</Company>
+    <Product>Apothecary Manager</Product>
+    <Copyright>Michael Czuba</Copyright>
+    <AssemblyName>Apothecary Manager</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
