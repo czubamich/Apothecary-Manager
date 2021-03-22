@@ -13,4 +13,9 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Apothecary-Manager\ApothecaryManager.WPF.csproj" />
+    <ProjectReference Include="..\ApothecaryManager.Data\ApothecaryManager.Data.csproj" />
+  </ItemGroup>
+
 </Project>
