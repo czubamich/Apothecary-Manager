@@ -16,7 +16,7 @@
         {
         }
 
-        public override string Title { get { return "View model title"; } }
+        public override string Title { get { return "Apothecary Manager"; } }
 
         public string TestText { get { return "MVVM test window"; } }
 

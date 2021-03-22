@@ -4,6 +4,6 @@
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
     <Grid>
-
+        <Label Content="{Binding TestText, Mode=OneWay}"/>
     </Grid>
 </catel:UserControl>
