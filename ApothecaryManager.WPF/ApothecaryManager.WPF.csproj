@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Catel.Core" Version="5.12.12" />
+    <PackageReference Include="Catel.Fody" Version="4.7.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Catel.MVVM" Version="5.12.12" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.4" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Unicons" Version="4.8.0" />
+    <PackageReference Include="ModuleInit.Fody" Version="2.1.1" />
+    <PackageReference Include="Orchestra.Shell.MahApps" Version="6.2.2" />
+  </ItemGroup>
+
+</Project>
