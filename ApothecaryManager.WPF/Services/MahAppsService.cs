@@ -19,9 +19,8 @@
         {
             var windowCommands = new WindowCommands();
 
-            var settingsButton = WindowCommandHelper.CreateWindowCommandButton(new PackIconUnicons { Kind = PackIconUniconsKind.Setting }, "settings");
-            //settingsButton.SetCurrentValue(System.Windows.Controls.Primitives.ButtonBase.CommandProperty, _commandManager.GetCommand(AppCommands.Settings.General));
-            windowCommands.Items.Add(settingsButton);
+            var profileButton = WindowCommandHelper.CreateWindowCommandButton(new PackIconUnicons { Kind = PackIconUniconsKind.User }, "Logged as Adam Kowalski");
+            windowCommands.Items.Add(profileButton);
 
             return windowCommands;
         }
@@ -38,12 +37,12 @@
 
         public FrameworkElement GetStatusBar()
         {
-            return null;
+            return new StatusBarView();
         }
 
         public AboutInfo GetAboutInfo()
         {
-            return new AboutInfo();
+            return null;
         }
     }
 }
