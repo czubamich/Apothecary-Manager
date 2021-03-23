@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApothecaryManager.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApothecaryManager.WPF", "ApothecaryManager.WPF\ApothecaryManager.WPF.csproj", "{C9E63352-CDA0-47A1-BF16-8E0B3D2E39D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApothecaryManager.WebApi", "ApothecaryManager.WebApi\ApothecaryManager.WebApi.csproj", "{0EF6B888-87C3-42B0-8EB5-6DBE50883C80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C9E63352-CDA0-47A1-BF16-8E0B3D2E39D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9E63352-CDA0-47A1-BF16-8E0B3D2E39D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9E63352-CDA0-47A1-BF16-8E0B3D2E39D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EF6B888-87C3-42B0-8EB5-6DBE50883C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF6B888-87C3-42B0-8EB5-6DBE50883C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF6B888-87C3-42B0-8EB5-6DBE50883C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF6B888-87C3-42B0-8EB5-6DBE50883C80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
