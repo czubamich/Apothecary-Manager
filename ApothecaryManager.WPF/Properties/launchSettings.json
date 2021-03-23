@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ApothecaryManager.WPF": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

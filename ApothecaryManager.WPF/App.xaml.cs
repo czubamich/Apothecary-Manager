@@ -1,4 +1,5 @@
-﻿using Catel.ApiCop;
+﻿using ApothecaryManager.WPF.Views;
+using Catel.ApiCop;
 using Catel.ApiCop.Listeners;
 using Catel.IoC;
 using Catel.Logging;
@@ -33,15 +34,15 @@ namespace ApothecaryManager.WPF
 
             // TODO: Register custom types in the ServiceLocator
             //Log.Info("Registering custom types");
-            //var serviceLocator = ServiceLocator.Default;
-            //serviceLocator.RegisterType<IMyInterface, IMyClass>();
+            var serviceLocator = ServiceLocator.Default;
+            //serviceLocator.RegisterType<IShellService, MainShellWindow>();
 
             // To auto-forward styles, check out Orchestra (see https://github.com/wildgums/orchestra)
             // StyleHelper.CreateStyleForwardersForDefaultStyles();
 
-            var serviceLocator = ServiceLocator.Default;
+            //var serviceLocator = ServiceLocator.Default;
             var shellService = serviceLocator.ResolveType<IShellService>();
-            shellService.CreateAsync<ShellWindow>();
+            shellService.CreateAsync<MainShellWindowView>();
 
             base.OnStartup(e);
         }
