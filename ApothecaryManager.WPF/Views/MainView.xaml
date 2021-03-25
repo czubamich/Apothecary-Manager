@@ -17,34 +17,5 @@
         <DataGrid Grid.Column="1">
 
         </DataGrid>
-        <StackPanel Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left">
-            <mah:Tile Title="Home"
-               Margin="4" Width="160px" Height="64px"
-               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
-               Background="DarkSeaGreen"
-               HorizontalTitleAlignment="Right">
-                <iconPacks:PackIconModern Width="40"
-                              Height="40"
-                              Kind="Home" />
-            </mah:Tile>
-            <mah:Tile Title="Mail"
-               Margin="4" Width="160px" Height="64px"
-               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
-               Background="DarkSeaGreen"
-               HorizontalTitleAlignment="Right">
-                <iconPacks:PackIconModern Width="40"
-                              Height="40"
-                              Kind="Email" />
-            </mah:Tile>
-            <mah:Tile Title="Mail"
-               Margin="4" Width="160px" Height="64px"
-               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
-               Background="DarkSeaGreen"
-               HorizontalTitleAlignment="Right">
-                <iconPacks:PackIconModern Width="40"
-                              Height="40"
-                              Kind="Email" />
-            </mah:Tile>
-        </StackPanel>
     </Grid>
 </catel:UserControl>
