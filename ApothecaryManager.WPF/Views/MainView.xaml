@@ -5,17 +5,67 @@
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
-    <Grid>
+    
+    <!-- MAIN GRID -->
+    <Grid Margin="5" Background="LightGray">
+        <!-- MAIN GRID COLUMNS -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160px"/>
-            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
+        <!-- MAIN GRID ROWS -->
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="5px"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Column="1">
 
-        </DataGrid>
+        <!-- UPPER GRID -->
+        <Grid Grid.Row="0">
+            
+            <!-- UPPER GRID COLUMNS -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- UPPER GRID ROWS -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
+            <Rectangle Grid.Row="0" Grid.Column="1" Fill="Green"/>
+            <Rectangle Grid.Row="0" Grid.Column="2" Fill="Blue"/>
+
+        </Grid>
+        
+        
+        <!-- MIDDLE BAR-->
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Fill="LightGray"/>
+
+        <!-- LOWER GRID -->
+        <Grid Grid.Row="2">
+
+            <!-- LOWER GRID COLUMNS -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- LOWER GRID ROWS -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Grid.Row="0" Grid.Column="0" Fill="Pink"/>
+            <Rectangle Grid.Row="0" Grid.Column="1" Fill="LightGreen"/>
+            <Rectangle Grid.Row="0" Grid.Column="2" Fill="LightBlue"/>
+        </Grid>
+
+
+
     </Grid>
 </catel:UserControl>

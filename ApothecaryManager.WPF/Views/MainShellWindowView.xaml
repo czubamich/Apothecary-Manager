@@ -73,7 +73,7 @@
             </ProgressBar.Style>
         </ProgressBar>
 
-        <StatusBar Grid.Row="3" x:Name="statusBar" Margin="0,-2,0,0">
+        <StatusBar Grid.Row="3" x:Name="statusBar" Margin="0,-5,0,0">
             <StatusBarItem>
                 <orccontrols:AnimatingTextBlock x:Name="statusTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <orccontrols:AnimatingTextBlock.ShowStoryboard>
