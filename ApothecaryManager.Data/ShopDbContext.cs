@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace ApothecaryManager.Data
 {
-    class TestDatabaseContext : DbContext
+    public class ShopDbContext : DbContext
     {
-        public TestDatabaseContext() : base()
+        public ShopDbContext() : base()
         {
 
         }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Drug> Drugs { get; set; }
         public DbSet<Inventory> Inventories { get; set; }

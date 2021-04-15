@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ApothecaryManager.Data.Model
 {
     [Table(name: "Users")]
-    class User
+    public class User
     {
         [Key]
         public long ID { get; set; }
