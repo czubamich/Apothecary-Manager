@@ -12,6 +12,8 @@ using ApothecaryManager.WebApi.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ApothecaryManager.WebApi.Services.Interfaces;
+using ApothecaryManager.WebApi.Services;
 
 namespace ApothecaryManager.WebApi
 {
@@ -34,6 +36,9 @@ namespace ApothecaryManager.WebApi
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.Add(new ServiceDescriptor(typeof(IAuthenticationService), new AuthenticationService));
+            services.Add(new ServiceDescriptor(typeof(IEncryptionService), new EncryptionService));
+            services.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
