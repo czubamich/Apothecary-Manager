@@ -26,4 +26,8 @@
     <PackageReference Include="Orchestra.Shell.MahApps" Version="6.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
+
 </Project>
