@@ -8,32 +8,35 @@ using System.Threading.Tasks;
 
 namespace ApothecaryManager.Data.Model
 {
-    [Table(name: "Users")]
-    class User
+    [Table(name: "Drugs")]
+    class Drug
     {
         [Key]
         public long ID { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        [Required]
-        public string FirstName { get; set; }
+        public string Name { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string LastName { get; set; }
+        public string ActiveSubstance { get; set; }
 
-        [Column(TypeName = "varchar(50000)")]
-        public string Password { get; set; }
+        [Column(TypeName = "varchar(500)")]
+        public string Description { get; set; }
 
-        [Column(TypeName = "varchar(50)")]
-        public string Level { get; set; }
-
-        [Column(TypeName = "varchar(50)")]
-        public string License { get; set; }
+        [ForeignKey("Category")]
+        public int CategoryRefId { get; set; }
+        public Category Category { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string Email { get; set; }
+        public string Unit { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string Phone { get; set; }
+        public string QuantityInPackage { get; set; }
+
+        [Column(TypeName = "varchar(50)")]
+        public string Dose { get; set; }
+
+        [Column(TypeName = "varchar(50)")]
+        public bool IsPrescribed { get; set; }
     }
 }

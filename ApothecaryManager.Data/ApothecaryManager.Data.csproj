@@ -51,6 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Drug.cs" />
+    <Compile Include="Model\Inventory.cs" />
+    <Compile Include="Model\Prescription.cs" />
+    <Compile Include="Model\RetailSale.cs" />
+    <Compile Include="Model\Sale.cs" />
+    <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
