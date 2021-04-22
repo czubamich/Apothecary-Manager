@@ -12,11 +12,11 @@ namespace ApothecaryManager.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IdentityController : ControllerBase
+    public class ShoppingController : ControllerBase
     {
         private readonly ShopDbContext _context;
 
-        public IdentityController(ShopDbContext context)
+        public ShoppingController(ShopDbContext context)
         {
             _context = context;
         }
@@ -30,14 +30,21 @@ namespace ApothecaryManager.WebApi.Controllers
 
         // POST api/<AccountController>
         [HttpPost]
-        public void Login([FromBody] string value)
+        public void Post([FromBody] string value)
         {
 
         }
 
         // PUT api/<AccountController>/5
         [HttpPut("{id}")]
-        public void Register(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] string value)
+        {
+
+        }
+
+        // DELETE api/<AccountController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
 
         }

@@ -10,7 +10,7 @@ namespace ApothecaryManager.Data
 {
     public class ShopDbContext : DbContext
     {
-        public ShopDbContext() : base()
+        public ShopDbContext(DbContextOptions<ShopDbContext> options) : base(options)
         {
 
         }
