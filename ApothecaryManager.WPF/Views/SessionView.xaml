@@ -1,0 +1,39 @@
+﻿<catel:UserControl x:Class="ApothecaryManager.WPF.Views.SessionView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                   xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
+    <Grid Margin="5 5 5 5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30px"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="Violet"/>
+
+        <TextBlock x:Name="Logged_User" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Grzegorz Brzęczyszczykiewicz" TextWrapping="Wrap" FontSize="18px"/>
+
+        <TextBlock x:Name="User_Position" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="USER_POSITION" TextWrapping="Wrap" FontSize="18px"/>
+
+        <TextBlock x:Name="Income_Today_Text" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Dzienny utarg: " TextWrapping="Wrap" FontSize="18px"/>
+        <TextBlock x:Name="Income_Today" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="2137 PLN" TextWrapping="Wrap" FontSize="18px" HorizontalAlignment="Right"/>
+
+        <TextBlock x:Name="Income_Month_Text" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Miesięczny utarg: " TextWrapping="Wrap" FontSize="18px"/>
+        <TextBlock x:Name="Income_Month" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="213700 PLN" TextWrapping="Wrap" FontSize="18px" HorizontalAlignment="Right"/>
+
+        <TextBlock x:Name="Session_Length_text" Grid.Row="5" Grid.Column="0" Text="Długość sesji: " TextWrapping="Wrap" FontSize="12px"/>
+        <TextBlock x:Name="Session_Length" Grid.Row="5" Grid.Column="0" Text="112 min" TextWrapping="Wrap" FontSize="12px" Margin="75,0,0,0" Grid.ColumnSpan="3"/>
+
+    </Grid>
+</catel:UserControl>

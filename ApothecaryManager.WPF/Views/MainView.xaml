@@ -4,110 +4,34 @@
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
+                   xmlns:local="clr-namespace:ApothecaryManager.WPF.Views"
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" xmlns:views="clr-namespace:ApothecaryManager.WPF.Views">
 
     <!-- MAIN GRID -->
     <Grid x:Name="Main_Grid" Margin="5" Background="Brown">
         <!-- MAIN GRID COLUMNS -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
         <!-- MAIN GRID ROWS -->
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5px"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition MinHeight="180px" Height="1*"/>
         </Grid.RowDefinitions>
 
-        <!-- UPPER GRID -->
-        <Grid x:Name="Upper_Grid" Grid.Row="0" Margin="3">
+        <Rectangle Grid.Row="0" Grid.Column="0" Fill="LightGreen"/>
+        
+        <views:MenuView Grid.Column="0" Grid.Row="0"/>
 
-            <!-- UPPER GRID COLUMNS -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <views:StatsView Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"/>
 
-            <!-- UPPER GRID ROWS -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <views:SessionView Grid.Column="0" Grid.Row="2"/>
 
-            <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
-            <Rectangle Grid.Row="0" Grid.Column="1" Fill="Green"/>
-            <Rectangle Grid.Row="0" Grid.Column="2" Fill="Blue"/>
-
-        </Grid>
-
-
-        <!-- MIDDLE BAR-->
-        <Rectangle x:Name="MidBar" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Fill="LightGray"/>
-
-        <!-- LOWER GRID -->
-        <Grid x:Name="Lower_Grid" Grid.Row="2" Margin="3">
-
-            <!-- LOWER GRID COLUMNS -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100px"/>
-                <ColumnDefinition Width="100px"/>
-                <ColumnDefinition Width="*"/>
-
-                <ColumnDefinition Width="100px"/>
-                <ColumnDefinition Width="100px"/>
-                <ColumnDefinition Width="*"/>
-
-                <ColumnDefinition Width="100px"/>
-                <ColumnDefinition Width="100px"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- LOWER GRID ROWS -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30px"/>
-                <RowDefinition Height="30px"/>
-                <RowDefinition Height="30px"/>
-                <RowDefinition Height="30px"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30px"/>
-            </Grid.RowDefinitions>
-
-            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="6" Fill="Pink"/>
-            <Rectangle Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="6" Fill="LightGreen"/>
-            <Rectangle Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="6" Fill="LightBlue"/>
-
-            <!-- ROW 0 -->
-            <!-- COLUMN 0-->
-            <TextBlock x:Name="Logged_User" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Grzegorz Brzęczyszczykiewicz" TextWrapping="Wrap" FontSize="18px"/>
-
-            <!-- ROW 1 -->
-            <!-- COLUMN 0-->
-            <TextBlock x:Name="User_Position" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="USER POSITION" TextWrapping="Wrap" FontSize="18px"/>
-
-            <!-- ROW 2 -->
-            <!-- COLUMN 0-->
-            <TextBlock x:Name="Income_Today" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Utarg dzisiaj: " TextWrapping="Wrap" FontSize="18px"/>
-
-            <!-- ROW 3 -->
-            <!-- COLUMN 0-->
-            <TextBlock x:Name="Income_Month" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Utarg w tym miesiącu: " TextWrapping="Wrap" FontSize="18px"/>
-
-            <!-- ROW 4 -->
-            <!-- COLUMN 3-->
-            <TextBlock x:Name="LOGS" Grid.Row="4" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="[21:37:00] Jan Paweł 2 wylogował się" TextWrapping="Wrap"/>
-            
-            <!-- ROW 5 -->
-            <!-- COLUMN 0-->
-            <TextBlock x:Name="Session_Length_text" Grid.Row="5" Grid.Column="0" Text="Długość sesji: " TextWrapping="Wrap" FontSize="12px"/>
-            <TextBlock x:Name="Session_Length" Grid.Row="5" Grid.Column="0" Text="112 min" TextWrapping="Wrap" FontSize="12px" Margin="75,0,0,0" Grid.ColumnSpan="3"/>
-
-
-
-
-        </Grid>
-
-
+        <views:LogView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
 
     </Grid>
+    
 </catel:UserControl>

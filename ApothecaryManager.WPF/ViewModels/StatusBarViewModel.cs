@@ -12,5 +12,10 @@
         #endregion
 
         public bool EnableAutomaticUpdates { get; set; }
+
+        public StatusBarViewModel()
+        {
+            EnableAutomaticUpdates = true;
+        }
     }
 }

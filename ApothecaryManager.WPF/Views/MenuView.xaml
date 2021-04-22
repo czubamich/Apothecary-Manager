@@ -1,0 +1,35 @@
+﻿<catel:UserControl x:Class="ApothecaryManager.WPF.Views.MenuView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                   xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Fill="Yellow"/>
+
+        <Button Grid.Row="0" Grid.Column="0" Margin="10 10 10 10">Guzig 1</Button>
+
+        <Button Grid.Row="1" Grid.Column="0" Margin="10 10 10 10">Guzig 2</Button>
+
+        <Button Grid.Row="2" Grid.Column="0" Margin="10 10 10 10">Guzig 3</Button>
+
+        <Button Grid.Row="3" Grid.Column="0" Margin="10 10 10 10">Guzig 4</Button>
+
+
+    </Grid>
+</catel:UserControl>
