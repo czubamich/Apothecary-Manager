@@ -14,9 +14,8 @@ namespace ApothecaryManager.Data.Model
         [Key]
         public int ID { get; set; }
 
-        [ForeignKey("User")]
-        public int UserRefId { get; set; }
-        public User User { get; set; }
+        public int SoldByRefId { get; set; }
+        public User SoldBy { get; set; }
 
         [Column(TypeName = "datetime2")]
         public DateTime Date { get; set; }
@@ -26,5 +25,8 @@ namespace ApothecaryManager.Data.Model
 
         [Column(TypeName = "varchar(50)")]
         public bool isRefundable { get; set; }
+
+        [InverseProperty("Sale")]
+        public List<SalesDetail> SalesDetails { get; set; }
     }
 }

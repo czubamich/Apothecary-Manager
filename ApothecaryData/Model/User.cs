@@ -35,5 +35,8 @@ namespace ApothecaryManager.Data.Model
 
         [Column(TypeName = "varchar(50)")]
         public string Phone { get; set; }
+
+        [InverseProperty("SoldBy")]
+        public List<Sale> Sales { get; set; }
     }
 }

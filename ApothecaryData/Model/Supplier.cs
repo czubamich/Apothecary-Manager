@@ -22,5 +22,7 @@ namespace ApothecaryManager.Data.Model
 
         [Column(TypeName = "varchar(50)")]
         public long Adress { get; set; }
+
+        public List<Drug> Deliveries { get; set; }
     }
 }

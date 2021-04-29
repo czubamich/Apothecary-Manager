@@ -90,7 +90,7 @@ namespace ApothecaryData.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
 
-                    b.Property<int>("DugyRefId")
+                    b.Property<int>("DrugRefId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ExpirationDate")
@@ -113,7 +113,7 @@ namespace ApothecaryData.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DugyRefId");
+                    b.HasIndex("DrugRefId");
 
                     b.HasIndex("SupplierRefId");
 
@@ -197,6 +197,9 @@ namespace ApothecaryData.Migrations
                     b.Property<double>("Refund")
                         .HasColumnType("float");
 
+                    b.Property<int?>("SaleID")
+                        .HasColumnType("int");
+
                     b.Property<int>("SaleRefId")
                         .HasColumnType("int");
 
@@ -209,7 +212,7 @@ namespace ApothecaryData.Migrations
 
                     b.HasIndex("PrescriptionRefId");
 
-                    b.HasIndex("SaleRefId");
+                    b.HasIndex("SaleID");
 
                     b.ToTable("SalesDetail");
                 });
@@ -287,7 +290,7 @@ namespace ApothecaryData.Migrations
                 {
                     b.HasOne("ApothecaryManager.Data.Model.Drug", "Drug")
                         .WithMany()
-                        .HasForeignKey("DugyRefId")
+                        .HasForeignKey("DrugRefId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -324,16 +327,19 @@ namespace ApothecaryData.Migrations
                         .HasForeignKey("PrescriptionRefId");
 
                     b.HasOne("ApothecaryManager.Data.Model.Sale", "Sale")
-                        .WithMany()
-                        .HasForeignKey("SaleRefId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("salesDetails")
+                        .HasForeignKey("SaleID");
 
                     b.Navigation("Drug");
 
                     b.Navigation("Prescription");
 
                     b.Navigation("Sale");
+                });
+
+            modelBuilder.Entity("ApothecaryManager.Data.Model.Sale", b =>
+                {
+                    b.Navigation("salesDetails");
                 });
 #pragma warning restore 612, 618
         }

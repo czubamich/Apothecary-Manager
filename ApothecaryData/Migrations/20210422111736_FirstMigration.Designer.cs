@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApothecaryData.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    [Migration("20210415153342_firstMigration")]
-    partial class firstMigration
+    [Migration("20210422111736_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,7 +92,7 @@ namespace ApothecaryData.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
 
-                    b.Property<int>("DugyRefId")
+                    b.Property<int>("DrugRefId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ExpirationDate")
@@ -115,7 +115,7 @@ namespace ApothecaryData.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DugyRefId");
+                    b.HasIndex("DrugRefId");
 
                     b.HasIndex("SupplierRefId");
 
@@ -199,7 +199,10 @@ namespace ApothecaryData.Migrations
                     b.Property<double>("Refund")
                         .HasColumnType("float");
 
-                    b.Property<int?>("SaleRefId")
+                    b.Property<int?>("SaleID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SaleRefId")
                         .HasColumnType("int");
 
                     b.Property<double>("UnitPrice")
@@ -211,7 +214,7 @@ namespace ApothecaryData.Migrations
 
                     b.HasIndex("PrescriptionRefId");
 
-                    b.HasIndex("SaleRefId");
+                    b.HasIndex("SaleID");
 
                     b.ToTable("SalesDetail");
                 });
@@ -289,7 +292,7 @@ namespace ApothecaryData.Migrations
                 {
                     b.HasOne("ApothecaryManager.Data.Model.Drug", "Drug")
                         .WithMany()
-                        .HasForeignKey("DugyRefId")
+                        .HasForeignKey("DrugRefId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -326,14 +329,19 @@ namespace ApothecaryData.Migrations
                         .HasForeignKey("PrescriptionRefId");
 
                     b.HasOne("ApothecaryManager.Data.Model.Sale", "Sale")
-                        .WithMany()
-                        .HasForeignKey("SaleRefId");
+                        .WithMany("salesDetails")
+                        .HasForeignKey("SaleID");
 
                     b.Navigation("Drug");
 
                     b.Navigation("Prescription");
 
                     b.Navigation("Sale");
+                });
+
+            modelBuilder.Entity("ApothecaryManager.Data.Model.Sale", b =>
+                {
+                    b.Navigation("salesDetails");
                 });
 #pragma warning restore 612, 618
         }

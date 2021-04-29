@@ -15,7 +15,7 @@ namespace ApothecaryManager.Data.Model
         public int ID { get; set; }
 
         [ForeignKey("Drug")]
-        public int DugyRefId { get; set; }
+        public int DrugRefId { get; set; }
         public Drug Drug { get; set; }
 
         [ForeignKey("Supplier")]

@@ -14,10 +14,6 @@ namespace ApothecaryManager.Data.Model
         [Key]
         public int ID { get; set; }
 
-        [ForeignKey("Sale")]
-        public int SaleRefId { get; set; }
-        public Sale Sale { get; set; }
-
         [ForeignKey("Prescription")]
         public int? PrescriptionRefId { get; set; }
         public Prescription Prescription { get; set; }
@@ -26,6 +22,9 @@ namespace ApothecaryManager.Data.Model
         [Required]
         public int DrugRefId { get; set; }
         public Sale Drug { get; set; }
+
+        public int SaleRefId { get; set; }
+        public Sale Sale { get; set; }
 
         [Column(TypeName = "int")]
         [Required]
