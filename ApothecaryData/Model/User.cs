@@ -12,7 +12,7 @@ namespace ApothecaryManager.Data.Model
     public class User
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "varchar(50)")]
         [Required]
@@ -21,8 +21,14 @@ namespace ApothecaryManager.Data.Model
         [Column(TypeName = "varchar(50)")]
         public string LastName { get; set; }
 
-        [Column(TypeName = "varchar(100)")]
-        public string Password { get; set; }
+        [Column(TypeName = "varchar(50)")]
+        public string Username { get; set; }
+
+        [Column(TypeName = "varbinary(64)")]
+        public byte[] PasswordHash { get; set; }
+
+        [Column(TypeName = "varbinary(128)")]
+        public byte[] PasswordSalt { get; set; }
 
         [Column(TypeName = "varchar(50)")]
         public string Level { get; set; }
