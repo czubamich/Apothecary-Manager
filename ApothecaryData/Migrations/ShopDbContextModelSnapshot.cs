@@ -21,7 +21,7 @@ namespace ApothecaryData.Migrations
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Category", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -30,14 +30,14 @@ namespace ApothecaryData.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Drug", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -64,19 +64,24 @@ namespace ApothecaryData.Migrations
                     b.Property<string>("QuantityInPackage")
                         .HasColumnType("varchar(50)");
 
+                    b.Property<int?>("SupplierId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Unit")
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryRefId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Drugs");
                 });
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Inventory", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -111,7 +116,7 @@ namespace ApothecaryData.Migrations
                     b.Property<double>("UnitPrice")
                         .HasColumnType("float");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("DrugRefId");
 
@@ -122,7 +127,7 @@ namespace ApothecaryData.Migrations
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Prescription", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -143,14 +148,14 @@ namespace ApothecaryData.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Prescriptions");
                 });
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Sale", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -158,26 +163,29 @@ namespace ApothecaryData.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("SoldById")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoldByRefId")
+                        .HasColumnType("int");
+
                     b.Property<string>("State")
                         .HasColumnType("varchar(50)");
-
-                    b.Property<int>("UserRefId")
-                        .HasColumnType("int");
 
                     b.Property<string>("isRefundable")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserRefId");
+                    b.HasIndex("SoldById");
 
                     b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.SalesDetail", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -197,7 +205,7 @@ namespace ApothecaryData.Migrations
                     b.Property<double>("Refund")
                         .HasColumnType("float");
 
-                    b.Property<int?>("SaleID")
+                    b.Property<int?>("SaleId")
                         .HasColumnType("int");
 
                     b.Property<int>("SaleRefId")
@@ -206,20 +214,20 @@ namespace ApothecaryData.Migrations
                     b.Property<double>("UnitPrice")
                         .HasColumnType("float");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("DrugRefId");
 
                     b.HasIndex("PrescriptionRefId");
 
-                    b.HasIndex("SaleID");
+                    b.HasIndex("SaleId");
 
-                    b.ToTable("SalesDetail");
+                    b.ToTable("SalesDetails");
                 });
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Supplier", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -236,14 +244,14 @@ namespace ApothecaryData.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.User", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -264,13 +272,19 @@ namespace ApothecaryData.Migrations
                     b.Property<string>("License")
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("Password")
-                        .HasColumnType("varchar(100)");
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(64)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(128)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ID");
+                    b.Property<string>("Username")
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
@@ -282,6 +296,10 @@ namespace ApothecaryData.Migrations
                         .HasForeignKey("CategoryRefId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ApothecaryManager.Data.Model.Supplier", null)
+                        .WithMany("Deliveries")
+                        .HasForeignKey("SupplierId");
 
                     b.Navigation("Category");
                 });
@@ -305,13 +323,11 @@ namespace ApothecaryData.Migrations
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Sale", b =>
                 {
-                    b.HasOne("ApothecaryManager.Data.Model.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserRefId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ApothecaryManager.Data.Model.User", "SoldBy")
+                        .WithMany("Sales")
+                        .HasForeignKey("SoldById");
 
-                    b.Navigation("User");
+                    b.Navigation("SoldBy");
                 });
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.SalesDetail", b =>
@@ -327,8 +343,8 @@ namespace ApothecaryData.Migrations
                         .HasForeignKey("PrescriptionRefId");
 
                     b.HasOne("ApothecaryManager.Data.Model.Sale", "Sale")
-                        .WithMany("salesDetails")
-                        .HasForeignKey("SaleID");
+                        .WithMany("SalesDetails")
+                        .HasForeignKey("SaleId");
 
                     b.Navigation("Drug");
 
@@ -339,7 +355,17 @@ namespace ApothecaryData.Migrations
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.Sale", b =>
                 {
-                    b.Navigation("salesDetails");
+                    b.Navigation("SalesDetails");
+                });
+
+            modelBuilder.Entity("ApothecaryManager.Data.Model.Supplier", b =>
+                {
+                    b.Navigation("Deliveries");
+                });
+
+            modelBuilder.Entity("ApothecaryManager.Data.Model.User", b =>
+                {
+                    b.Navigation("Sales");
                 });
 #pragma warning restore 612, 618
         }

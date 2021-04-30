@@ -12,7 +12,7 @@ namespace ApothecaryManager.Data.Model
     public class Supplier
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "varchar(50)")]
         public long Name { get; set; }

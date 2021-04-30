@@ -13,7 +13,7 @@ namespace ApothecaryManager.Data.Model
     public class Prescription
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "varchar(5000)")]
         [Required]

@@ -12,7 +12,7 @@ namespace ApothecaryManager.Data.Model
     public class Category
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "varchar(50)")]
         [Required]

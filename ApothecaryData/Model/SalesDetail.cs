@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ApothecaryManager.Data.Model
 {
-    [Table(name: "SalesDetail")]
+    [Table(name: "SalesDetails")]
     public class SalesDetail
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("Prescription")]
         public int? PrescriptionRefId { get; set; }

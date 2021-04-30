@@ -12,7 +12,7 @@ namespace ApothecaryManager.Data.Model
     public class Sale
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public int SoldByRefId { get; set; }
         public User SoldBy { get; set; }

@@ -12,7 +12,7 @@ namespace ApothecaryManager.Data.Model
     public class Inventory
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("Drug")]
         public int DrugRefId { get; set; }
