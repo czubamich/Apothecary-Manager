@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ApothecaryManager.Data.Model
@@ -14,10 +15,12 @@ namespace ApothecaryManager.Data.Model
         [Key]
         public int Id { get; set; }
 
+        [JsonIgnore]
         [ForeignKey("Drug")]
         public int DrugRefId { get; set; }
         public Drug Drug { get; set; }
 
+        [JsonIgnore]
         [ForeignKey("Supplier")]
         public int? SupplierRefId { get; set; }
         public Supplier Supplier { get; set; }

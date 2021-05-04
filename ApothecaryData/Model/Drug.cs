@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ApothecaryManager.Data.Model
@@ -23,8 +24,9 @@ namespace ApothecaryManager.Data.Model
         [Column(TypeName = "varchar(500)")]
         public string Description { get; set; }
 
+        [JsonIgnore]
         [ForeignKey("Category")]
-        public int CategoryRefId { get; set; }
+        public int? CategoryRefId { get; set; }
         public Category Category { get; set; }
 
         [Column(TypeName = "varchar(50)")]

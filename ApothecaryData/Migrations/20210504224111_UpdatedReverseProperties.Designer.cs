@@ -4,14 +4,16 @@ using ApothecaryManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApothecaryData.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class ShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210504224111_UpdatedReverseProperties")]
+    partial class UpdatedReverseProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +47,7 @@ namespace ApothecaryData.Migrations
                     b.Property<string>("ActiveSubstance")
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int?>("CategoryRefId")
+                    b.Property<int>("CategoryRefId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -200,9 +202,6 @@ namespace ApothecaryData.Migrations
                     b.Property<double>("Refund")
                         .HasColumnType("float");
 
-                    b.Property<int?>("SaleId")
-                        .HasColumnType("int");
-
                     b.Property<double>("UnitPrice")
                         .HasColumnType("float");
 
@@ -211,8 +210,6 @@ namespace ApothecaryData.Migrations
                     b.HasIndex("DrugRefId");
 
                     b.HasIndex("PrescriptionRefId");
-
-                    b.HasIndex("SaleId");
 
                     b.ToTable("SaleDetails");
                 });
@@ -285,7 +282,9 @@ namespace ApothecaryData.Migrations
                 {
                     b.HasOne("ApothecaryManager.Data.Model.Category", "Category")
                         .WithMany("DrugsInCategory")
-                        .HasForeignKey("CategoryRefId");
+                        .HasForeignKey("CategoryRefId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
@@ -318,8 +317,8 @@ namespace ApothecaryData.Migrations
 
             modelBuilder.Entity("ApothecaryManager.Data.Model.SaleDetail", b =>
                 {
-                    b.HasOne("ApothecaryManager.Data.Model.Drug", "Drug")
-                        .WithMany()
+                    b.HasOne("ApothecaryManager.Data.Model.Sale", "Drug")
+                        .WithMany("SaleDetails")
                         .HasForeignKey("DrugRefId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -327,10 +326,6 @@ namespace ApothecaryData.Migrations
                     b.HasOne("ApothecaryManager.Data.Model.Prescription", "Prescription")
                         .WithMany()
                         .HasForeignKey("PrescriptionRefId");
-
-                    b.HasOne("ApothecaryManager.Data.Model.Sale", null)
-                        .WithMany("SaleDetails")
-                        .HasForeignKey("SaleId");
 
                     b.Navigation("Drug");
 

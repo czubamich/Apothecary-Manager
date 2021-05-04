@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ApothecaryManager.Data.Model
 {
@@ -21,15 +24,19 @@ namespace ApothecaryManager.Data.Model
         [Column(TypeName = "varchar(50)")]
         public string LastName { get; set; }
 
+        [JsonIgnore]
         [Column(TypeName = "varchar(50)")]
         public string Username { get; set; }
 
+        [JsonIgnore]
         [Column(TypeName = "varbinary(64)")]
         public byte[] PasswordHash { get; set; }
 
+        [JsonIgnore]
         [Column(TypeName = "varbinary(128)")]
         public byte[] PasswordSalt { get; set; }
 
+        [JsonIgnore]
         [Column(TypeName = "varchar(50)")]
         public string Level { get; set; }
 
@@ -42,7 +49,8 @@ namespace ApothecaryManager.Data.Model
         [Column(TypeName = "varchar(50)")]
         public string Phone { get; set; }
 
+        [JsonIgnore]
         [InverseProperty("SoldBy")]
-        public List<Sale> Sales { get; set; }
+        public ICollection<Sale> Sales { get; set; }
     }
 }

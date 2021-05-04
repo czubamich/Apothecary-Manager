@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ApothecaryManager.Data.Model
@@ -17,5 +18,9 @@ namespace ApothecaryManager.Data.Model
         [Column(TypeName = "varchar(50)")]
         [Required]
         public long Name { get; set; }
+
+        [InverseProperty("Category")]
+        [JsonIgnore]
+        public virtual ICollection<Drug> DrugsInCategory { get; set; }
     }
 }
