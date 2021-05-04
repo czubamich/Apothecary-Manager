@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using ApothecaryManager.Data;
 using Microsoft.AspNetCore.Authorization;
 using ApothecaryManager.Data.Model;
+using ApothecaryManager.Api.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -40,14 +41,14 @@ namespace ApothecaryManager.WebApi.Controllers
 
         // POST api/<AccountController>
         [HttpPost]
-        public void Post([FromBody] Sale item)
+        public void Post([FromBody] SaleModel item)
         {
             throw new NotImplementedException();
         }
 
         // POST api/<AccountController>/ID
         [HttpPut]
-        public void Put(int id,[FromBody] Sale item)
+        public void Put(int id,[FromBody] SaleModel item)
         {
             throw new NotImplementedException();
         }

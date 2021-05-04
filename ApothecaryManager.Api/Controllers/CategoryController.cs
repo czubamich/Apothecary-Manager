@@ -41,14 +41,14 @@ namespace ApothecaryManager.WebApi.Controllers
 
         // POST api/<AccountController>
         [HttpPost]
-        public void Post([FromBody] Category item)
+        public void Post([FromBody] string item)
         {
             throw new NotImplementedException();
         }
 
         // PUT api/<AccountController>/5
         [HttpPut("{Id}")]
-        public void Put(int id, [FromBody] Category item)
+        public void Put(int id, [FromBody] string item)
         {
             throw new NotImplementedException();
         }
