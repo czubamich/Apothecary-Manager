@@ -20,6 +20,9 @@ using ApothecaryManager.Api.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ApothecaryManager.Api.Services;
+using ApothecaryManager.Api.Services.Interfaces;
+using ApothecaryManager.Data.Model;
 
 namespace ApothecaryManager.Api
 {
@@ -47,14 +50,22 @@ namespace ApothecaryManager.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
+            var authenticationConfiguration = new AuthenticationConfiguration();
+            Configuration.Bind("Authentication", authenticationConfiguration);
 
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton(authenticationConfiguration);
+            services.AddSingleton<TokenGenerator>();
+            services.AddSingleton<AccessTokenGenerator>();
+            services.AddSingleton<RefreshTokenGenerator>();
+            services.AddSingleton<RefreshTokenValidator>();
+            services.AddSingleton<IRefreshTokenRepository, InMemoryRefreshTokenRepository>();
+            services.AddSingleton<AuthenticationService>();
 
-            // configure jwt authentication
-            var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddScoped<IUserService, UserService>();
+
+
+            //configure jwt authentication
+            var key = Encoding.ASCII.GetBytes(authenticationConfiguration.AccessTokenSecret);
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -66,13 +77,14 @@ namespace ApothecaryManager.Api
                 {
                     OnTokenValidated = context =>
                     {
-                        var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticationService>();
-                        var userId = int.Parse(context.Principal.Identity.Name);
-                        var user = userService.GetById(userId);
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                        User user = null;
+                        if (int.TryParse(context.Principal.Identity.Name, out var userId))
+                            user = userService.GetById(userId);
                         if (user == null)
                         {
-                                        // return unauthorized if user no longer exists
-                                        context.Fail("Unauthorized");
+                            // return unauthorized if user no longer exists
+                            context.Fail("Unauthorized");
                         }
                         return Task.CompletedTask;
                     }
@@ -81,10 +93,13 @@ namespace ApothecaryManager.Api
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidIssuer = authenticationConfiguration.Issuer,
+                    ValidAudience = authenticationConfiguration.Audience,
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
         }

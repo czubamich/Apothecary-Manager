@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApothecaryManager.WebApi.Services.Interfaces
 {
-    public interface IAuthenticationService
+    public interface IUserService
     {
         User Authenticate(string username, string password);
         IEnumerable<User> GetAll();

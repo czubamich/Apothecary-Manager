@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.Extensions.Options;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using ApothecaryManager.WebApi.Services.Interfaces;
-using ApothecaryManager.Api.Models;
+﻿using ApothecaryManager.Api.Models;
+using ApothecaryManager.Api.Services;
+using ApothecaryManager.Api.Services.Interfaces;
 using ApothecaryManager.Data.Model;
-using AutoMapper;
-using ApothecaryManager.Api.Helpers;
 using ApothecaryManager.WebApi.Helpers;
+using ApothecaryManager.WebApi.Services.Interfaces;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkId=397860
 
@@ -23,56 +21,74 @@ namespace ApothecaryManager.WebApi.Controllers
     [Route("api/[controller]")]
     public class IdentityController : ControllerBase
     {
-        private IAuthenticationService _userService;
+        private IUserService _userService;
         private IMapper _mapper;
-        private readonly AppSettings _appSettings;
+        private RefreshTokenValidator _refreshTokenValidator;
+        private AuthenticationService _authenticationService;
+        private IRefreshTokenRepository _refreshTokenRepository;
 
-        public IdentityController(
-            IAuthenticationService userService,
-            IMapper mapper,
-            IOptions<AppSettings> appSettings)
+        public IdentityController(IUserService userService, IMapper mapper, RefreshTokenValidator refreshTokenValidator, AuthenticationService authenticationService, IRefreshTokenRepository refreshTokenRepository)
         {
             _userService = userService;
             _mapper = mapper;
-            _appSettings = appSettings.Value;
+            _refreshTokenValidator = refreshTokenValidator;
+            this._authenticationService = authenticationService;
+            _refreshTokenRepository = refreshTokenRepository;
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] AuthenticateModel model)
+        [HttpPost("login")]
+        public async Task<IActionResult> Authenticate([FromBody] AuthenticateModel model)
         {
             var user = _userService.Authenticate(model.Username, model.Password);
-
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-
-            // return basic user info and authentication token
-            return Ok(new
-            {
-                Id = user.Id,
-                Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Token = tokenString
-            });
+            var response = await _authenticationService.Authenticate(user);
+            return Ok(response);
         }
 
         [AllowAnonymous]
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh([FromBody] RefreshModel refreshModel)
+        {
+            bool isValidRefreshToken = _refreshTokenValidator.Validate(refreshModel.RefreshToken);
+            if(!isValidRefreshToken)
+            {
+                return BadRequest();
+            }
+
+            var refreshToken = await _refreshTokenRepository.GetByToken(refreshModel.RefreshToken);
+            if(refreshToken == null)
+            {
+                return Unauthorized();
+            }
+
+            User user = _userService.GetById(refreshToken.UserId);
+            await _refreshTokenRepository.Delete(refreshToken.Id);
+
+            var response = await _authenticationService.Authenticate(user);
+
+            return Ok(response);
+        }
+
+        [HttpDelete("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            string id = HttpContext.User.Identity.Name;
+
+            if (!int.TryParse(id, out int userId))
+            {
+                return Unauthorized();
+            }
+
+            await _refreshTokenRepository.DeleteAll(userId);
+
+            return Ok();
+        }
+
         [HttpPost("register")]
+        [Authorize(Roles = "Administrators")]
         public IActionResult Register([FromBody] RegisterModel model)
         {
             // map model to entity
