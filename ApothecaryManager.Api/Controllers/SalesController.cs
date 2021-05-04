@@ -12,42 +12,42 @@ using ApothecaryManager.Data.Model;
 
 namespace ApothecaryManager.WebApi.Controllers
 {
-    //TODO: Inventory controller
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class InventoryController : ControllerBase
+    public class SalesController : ControllerBase
     {
         private readonly ShopDbContext _context;
 
-        public InventoryController(ShopDbContext context)
+        public SalesController(ShopDbContext context)
         {
             _context = context;
         }
 
         // GET: api/<AccountController>
         [HttpGet("all")]
-        public Inventory GetAll()
+        public Sale GetAll()
         {
             throw new NotImplementedException();
         }
 
         // GET: api/<AccountController>
         [HttpGet("{id}")]
-        public Inventory Get(int id)
+        public Sale Get(int id)
         {
             throw new NotImplementedException();
         }
 
         // POST api/<AccountController>
         [HttpPost]
-        public void Post([FromBody] Inventory item)
+        public void Post([FromBody] Sale item)
         {
             throw new NotImplementedException();
         }
 
-        [HttpPut("{Id}")]
-        public void Put(int id, [FromBody] Inventory item)
+        // POST api/<AccountController>/ID
+        [HttpPut]
+        public void Put(int id,[FromBody] Sale item)
         {
             throw new NotImplementedException();
         }

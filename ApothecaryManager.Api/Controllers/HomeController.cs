@@ -19,6 +19,7 @@ namespace ApothecaryManager.WebApi.Controllers
         [HttpGet("version")]
         public String GetVersion()
         {
+            //TODO: Return server version
             throw new NotImplementedException();
         }
 
@@ -27,6 +28,14 @@ namespace ApothecaryManager.WebApi.Controllers
         public DateTime GetTimeNow()
         {
             return DateTime.Now;
+        }
+
+        [AllowAnonymous]
+        [HttpGet("status")]
+        public DateTime GetStatus()
+        {
+            //TODO: Check if logged in
+            throw new NotImplementedException();
         }
     }
 }

@@ -16,38 +16,39 @@ namespace ApothecaryManager.WebApi.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class InventoryController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         private readonly ShopDbContext _context;
 
-        public InventoryController(ShopDbContext context)
+        public CategoryController(ShopDbContext context)
         {
             _context = context;
         }
 
         // GET: api/<AccountController>
         [HttpGet("all")]
-        public Inventory GetAll()
+        public IEnumerable<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Categories.AsEnumerable();
         }
 
-        // GET: api/<AccountController>
+        // GET: api/<AccountController>/5
         [HttpGet("{id}")]
-        public Inventory Get(int id)
+        public Category Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Categories.FirstOrDefault(x => x.Id == id);
         }
 
         // POST api/<AccountController>
         [HttpPost]
-        public void Post([FromBody] Inventory item)
+        public void Post([FromBody] Category item)
         {
             throw new NotImplementedException();
         }
 
+        // PUT api/<AccountController>/5
         [HttpPut("{Id}")]
-        public void Put(int id, [FromBody] Inventory item)
+        public void Put(int id, [FromBody] Category item)
         {
             throw new NotImplementedException();
         }
