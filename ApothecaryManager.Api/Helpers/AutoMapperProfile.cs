@@ -15,6 +15,13 @@ namespace ApothecaryManager.Api.Helpers
             CreateMap<User, UserModel>();
             CreateMap<RegisterModel, User>();
             CreateMap<UpdateModel, User>();
+
+            CreateMap<DrugModel, Drug>();
+            CreateMap<InventoryModel, Inventory>();
+            CreateMap<PrescriptionModel, Prescription>();
+            CreateMap<SaleDetailModel, SaleDetail>();
+            CreateMap<SaleModel, Sale>();
+            CreateMap<SupplierModel, Supplier>();
         }
     }
 }
