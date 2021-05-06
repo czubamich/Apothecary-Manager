@@ -8,6 +8,7 @@ using ApothecaryManager.Data;
 using Microsoft.AspNetCore.Authorization;
 using ApothecaryManager.Data.Model;
 using ApothecaryManager.Api.Models;
+using AutoMapper;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,30 +21,34 @@ namespace ApothecaryManager.WebApi.Controllers
     public class SupplierController : ControllerBase
     {
         private readonly ShopDbContext _context;
+        private readonly IMapper _mapper;
 
-        public SupplierController(ShopDbContext context)
+        public SupplierController(ShopDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/<AccountController>
         [HttpGet("all")]
         public IEnumerable<Supplier> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Suppliers.AsEnumerable();
         }
 
         // GET: api/<AccountController>
         [HttpGet("{id}")]
         public Supplier Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Suppliers.FirstOrDefault(x => x.Id == id);
         }
 
         // POST api/<AccountController>
         [HttpPost]
         public void Post([FromBody] SupplierModel item)
         {
+            Supplier val = _mapper.Map<SupplierModel, Supplier>(item);
+
             throw new NotImplementedException();
         }
 
