@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using ApothecaryManager.Data;
 using Microsoft.AspNetCore.Authorization;
 using ApothecaryManager.Data.Model;
+using ApothecaryManager.Api.Models.Responses;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,16 +28,34 @@ namespace ApothecaryManager.WebApi.Controllers
 
         // GET: api/<AccountController>
         [HttpGet("all")]
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<CategoryResponse> GetAll()
         {
-            return _context.Categories.AsEnumerable();
+            var buffer = new List<CategoryResponse>();
+
+            foreach(var cat in _context.Categories)
+            {
+                buffer.Add(new CategoryResponse()
+                {
+                    Id = cat.Id,
+                    Name = cat.Name,
+                    Drugs = cat.DrugsInCategory,
+                });
+            }
+
+            return buffer;
         }
 
         // GET: api/<AccountController>/5
         [HttpGet("{id}")]
-        public Category Get(int id)
+        public CategoryResponse Get(int id)
         {
-            return _context.Categories.FirstOrDefault(x => x.Id == id);
+            var cat = _context.Categories.FirstOrDefault(x => x.Id == id);
+            return new CategoryResponse()
+            {
+                Id = cat.Id,
+                Name = cat.Name,
+                Drugs = cat.DrugsInCategory,
+            };
         }
 
         // POST api/<AccountController>
