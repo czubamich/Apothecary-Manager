@@ -16,13 +16,13 @@ namespace ApothecaryManager.Data.Model
         public int Id { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public long Name { get; set; }
+        public string Name { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public long Phone { get; set; }
+        public string Phone { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public long Adress { get; set; }
+        public string Adress { get; set; }
 
         [JsonIgnore]
         [InverseProperty("Supplier")]

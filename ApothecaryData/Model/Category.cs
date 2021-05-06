@@ -17,7 +17,7 @@ namespace ApothecaryManager.Data.Model
 
         [Column(TypeName = "varchar(50)")]
         [Required]
-        public long Name { get; set; }
+        public string Name { get; set; }
 
         [InverseProperty("Category")]
         [JsonIgnore]
