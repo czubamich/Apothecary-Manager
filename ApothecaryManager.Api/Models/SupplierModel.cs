@@ -9,8 +9,8 @@ namespace ApothecaryManager.Api.Models
     public class SupplierModel
     {
         [Required]
-        public long Name { get; set; }
-        public long Phone { get; set; }
-        public long Adress { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Adress { get; set; }
     }
 }
