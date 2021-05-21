@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="Services\Interfaces\" />
+    <Folder Include="Views\NewFolder1\" />
+    <Folder Include="Views\NewFolder\" />
   </ItemGroup>
 
 </Project>

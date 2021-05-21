@@ -16,19 +16,22 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
 
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Fill="Yellow"/>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Fill="Yellow"/>
 
-        <Button Grid.Row="0" Grid.Column="0" Margin="10 10 10 10">Guzig 1</Button>
+        <Button Grid.Row="0" Grid.Column="0" Margin="5 5 5 5">Strona Główna</Button>
 
-        <Button Grid.Row="1" Grid.Column="0" Margin="10 10 10 10">Guzig 2</Button>
+        <Button Grid.Row="1" Grid.Column="0" Margin="5 5 5 5">Sprzedaż</Button>
 
-        <Button Grid.Row="2" Grid.Column="0" Margin="10 10 10 10">Guzig 3</Button>
+        <Button Grid.Row="2" Grid.Column="0" Margin="5 5 5 5">Baza leków</Button>
 
-        <Button Grid.Row="3" Grid.Column="0" Margin="10 10 10 10">Guzig 4</Button>
+        <Button Grid.Row="3" Grid.Column="0" Margin="5 5 5 5">Inwentarz</Button>
+
+        <Button Grid.Row="4" Grid.Column="0" Margin="5 5 5 5">Statystyki/Historia transakcji</Button>
 
 
     </Grid>
