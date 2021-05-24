@@ -8,7 +8,7 @@
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" xmlns:views="clr-namespace:ApothecaryManager.WPF.Views">
 
     <!-- MAIN GRID -->
-    <Grid x:Name="Main_Grid" Margin="5" Background="Brown">
+    <Grid x:Name="Main_Grid" Margin="5" Background="#4d8f6b">
         <!-- MAIN GRID COLUMNS -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
