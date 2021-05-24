@@ -4,6 +4,7 @@
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:local="clr-namespace:ApothecaryManager.WPF.Views"
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
     <Grid>
         <Grid.ColumnDefinitions>

@@ -20,7 +20,7 @@
             <RowDefinition Height="30px"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="Violet"/>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="#4d8f6b"/>
 
         <TextBlock x:Name="Logged_User" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Grzegorz Brzęczyszczykiewicz" TextWrapping="Wrap" FontSize="18px"/>
 

@@ -4,7 +4,7 @@
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" xmlns:local="clr-namespace:ApothecaryManager.WPF.Views">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -12,12 +12,15 @@
 
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition MinHeight="180px" Height="1*"/>
         </Grid.RowDefinitions>
 
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Fill="red"/>
 
         <TextBlock FontSize="50">Statystyki/Historia transkacji</TextBlock>
+
+        <local:LogView Grid.Column="0" Grid.Row="1"/>
 
     </Grid>
 </catel:UserControl>

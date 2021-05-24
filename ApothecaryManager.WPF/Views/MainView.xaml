@@ -26,7 +26,7 @@
             <RowDefinition MinHeight="180px" Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="LightGreen"/>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="#4d8f6b"/>
 
         <Button Name="btnHome" Command="{Binding Home}" Content="Strona Główna"  Grid.Row="0" Grid.Column="0" Margin="5 5 5 5"/>
 

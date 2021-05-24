@@ -5,20 +5,102 @@
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type StackPanel}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#4d8f6b" Offset="0"/>
+                                <GradientStop Color="#4d8f6b" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Margin="10">
+                <Label Padding="10" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Content="Szukaj"></Label>
+                <CheckBox IsChecked="{Binding ProductFilter.ByText}" x:Name="byText" Margin="3" FontWeight="Bold" Content="Po nazwie"></CheckBox>
+                <TextBox Text="{Binding ProductFilter.Text}" IsEnabled="{Binding IsChecked, ElementName=byText}" Margin="2"></TextBox>
+                <Separator Margin="20"></Separator>
+                <CheckBox IsChecked="{Binding ProductFilter.ByPrice}" x:Name="byPrice" FontWeight="Bold" Content="Według ceny"></CheckBox>
+                <Grid IsEnabled="{Binding IsChecked, ElementName=byPrice}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Od"></Label>
+                    <TextBox Grid.Row="0" Text="{Binding ProductFilter.PriceFrom}" Margin="2" Grid.Column="1"></TextBox>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Fill="red"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Do"></Label>
+                    <TextBox Text="{Binding ProductFilter.PriceTo}" Margin="2" Grid.Row="1" Grid.Column="1"></TextBox>
+                </Grid>
+                <Separator Margin="20"></Separator>
+                <CheckBox IsChecked="{Binding ProductFilter.ByCategory}" x:Name="byCategory"  FontWeight="Bold" Content="Po kategorii"></CheckBox>
+                <ComboBox SelectedIndex="{Binding ProductFilter.Category}"  IsEnabled="{Binding IsChecked, ElementName=byCategory}" Margin="2">
+                    <ComboBoxItem>Food</ComboBoxItem>
+                    <ComboBoxItem>Clothes</ComboBoxItem>
+                    <ComboBoxItem>Electronics</ComboBoxItem>
+                </ComboBox>
+                <Separator Margin="20"></Separator>
+                <Button Padding="10" Margin="3" Content="Szukaj" Command="{Binding ShowFiltered }"></Button>
+                <Button Padding="10" Margin="3" Content="Pokaż wszystkie" Command="{Binding ShowAll}"></Button>
+            </StackPanel>
+        </StackPanel>
+        <!--<ListBox VerticalAlignment="Top" Grid.Column="1" ItemsSource="{Binding Source={StaticResource productsWithoutBlank}}" HorizontalContentAlignment="Stretch" AlternationCount="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="FontFamily" Value="Arial"/>
+                                <Setter Property="FontSize" Value="12"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="FontFamily" Value="Arial"/>
+                            </Style>
 
-        <TextBlock FontSize="50">Sprzedaż</TextBlock>
-
-
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
+                            <TextBlock Padding="3" FontSize="14" Text="{Binding Description}"></TextBlock>
+                            <StackPanel Margin="3" Orientation="Horizontal">
+                                <TextBlock FontSize="12" FontWeight="Bold" Text="Category: "></TextBlock>
+                                <TextBlock FontSize="12" Text="{Binding Category}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="5">
+                            <TextBlock FontSize="18" FontWeight="Bold" Text="Price: "></TextBlock>
+                            <TextBlock FontSize="18" Text="{Binding Price, StringFormat=N2}"></TextBlock>
+                            <TextBlock FontSize="18" Text="zł"></TextBlock>
+                        </StackPanel>
+                        <Button Width="70" FontSize="14" Grid.Row="0" Grid.Column="2" Padding="10" Command="{Binding AddProduct, Source={StaticResource cart}}" CommandParameter="{Binding}">
+                            <Button.Content>
+                                <Image Source="/ShopManager;component/Views/Images/cart.png" Stretch="UniformToFill"></Image>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
     </Grid>
 </catel:UserControl>
