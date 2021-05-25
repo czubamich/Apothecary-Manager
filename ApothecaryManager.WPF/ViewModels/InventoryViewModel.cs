@@ -9,12 +9,54 @@
     using Catel.Data;
     using Catel.IoC;
     using Catel.Services;
+    using ApothecaryManager.Data.Model;
+    using System.IO;
 
     public class InventoryViewModel : ViewModelBase
     {
+        public ObservableCollection<Drug> Products { get; set; }
+
         public InventoryViewModel(/* dependency injection here */)
         {
+            Products = new ObservableCollection<Drug>();
+
+            using (var reader = new StreamReader("leki.tsv"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split('\t');
+
+                    Products.Add(new Drug()
+                    {
+                        Name = values[0],
+                        ActiveSubstance = values[1],
+                        Unit = values[2],
+                        QuantityInPackage = values[3],
+                        Dose = values[4],
+                        IsPrescribed = values[5]
+                    });
+                }
+            }
+
+                Products.Add(new Drug()
+            {
+                Name = "Acodin",
+                ActiveSubstance = "Acodinum por favor",
+                Description = "Lek na kaszel",
+                Unit = "ml",
+                QuantityInPackage = "100",
+                Dose = "100 mg Acodinum",
+                IsPrescribed = "TRUE"
+            }) ;
+
+
+
+
+
         }
+
+        
 
         public override string Title { get { return "Apothecary Manager"; } }
 
