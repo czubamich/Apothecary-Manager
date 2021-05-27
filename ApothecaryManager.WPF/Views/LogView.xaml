@@ -15,7 +15,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
+        <Rectangle Grid.Row="0" Grid.Column="0" Fill="Blue"/>
+
+        <TextBlock FontSize="50">LOGI</TextBlock>
 
 
     </Grid>
