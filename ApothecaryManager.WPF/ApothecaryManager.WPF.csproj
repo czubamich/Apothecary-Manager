@@ -28,6 +28,12 @@
 
   <ItemGroup>
     <Folder Include="Services\Interfaces\" />
+    <Folder Include="Views\NewFolder1\" />
+    <Folder Include="Views\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApothecaryData\ApothecaryData.csproj" />
   </ItemGroup>
 
 </Project>

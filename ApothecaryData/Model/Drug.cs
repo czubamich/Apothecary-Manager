@@ -39,6 +39,6 @@ namespace ApothecaryManager.Data.Model
         public string Dose { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public bool IsPrescribed { get; set; }
+        public string IsPrescribed { get; set; }
     }
 }
