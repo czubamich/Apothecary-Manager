@@ -47,36 +47,61 @@ namespace ApothecaryManager.WebApi.Controllers
 
         // GET: api/<AccountController>/5
         [HttpGet("{id}")]
-        public CategoryResponse Get(int id)
+        public ActionResult<CategoryResponse> Get(int id)
         {
-            var cat = _context.Categories.FirstOrDefault(x => x.Id == id);
-            return new CategoryResponse()
+            var cat = _context.Categories.First(x => x.Id == id);
+
+            if (cat == null)
+                return NotFound();
+
+            return Ok(new CategoryResponse()
             {
                 Id = cat.Id,
                 Name = cat.Name,
                 Drugs = cat.DrugsInCategory,
-            };
+            });
         }
 
         // POST api/<AccountController>
         [HttpPost]
-        public void Post([FromBody] string item)
+        public IActionResult Post([FromBody] string item)
         {
-            throw new NotImplementedException();
+            _context.Categories.Add(
+                new Category()
+                {
+                    Name = item
+                });
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         // PUT api/<AccountController>/5
         [HttpPut("{Id}")]
-        public void Put(int id, [FromBody] string item)
+        public IActionResult Put(int id, [FromBody] string item)
         {
-            throw new NotImplementedException();
+            var element = _context.Categories.First(x => x.Id == id);
+            if (x == null)
+                return NotFound();
+
+            element.Name = item;
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         // DELETE api/<AccountController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            var element = _context.Categories.First(x => x.Id == id);
+            if (x == null)
+                return NotFound();
+
+            _context.Categories.Remove(element);
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
