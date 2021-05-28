@@ -81,7 +81,7 @@ namespace ApothecaryManager.WebApi.Controllers
         public IActionResult Put(int id, [FromBody] string item)
         {
             var element = _context.Categories.First(x => x.Id == id);
-            if (x == null)
+            if (element == null)
                 return NotFound();
 
             element.Name = item;
@@ -95,7 +95,7 @@ namespace ApothecaryManager.WebApi.Controllers
         public IActionResult Delete(int id)
         {
             var element = _context.Categories.First(x => x.Id == id);
-            if (x == null)
+            if (element == null)
                 return NotFound();
 
             _context.Categories.Remove(element);
