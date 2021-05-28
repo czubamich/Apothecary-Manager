@@ -12,13 +12,41 @@
 
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Fill="red"/>
+        <Grid VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" Grid.Column="0" IsReadOnly="True" CanUserAddRows="False" CanUserSortColumns="True" ItemsSource="{Binding Products, Mode=TwoWay}">
+            </DataGrid>
+        </Grid>
 
-        <TextBlock FontSize="50">Baza leków</TextBlock>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="red"/>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <TextBox Grid.Row="1" HorizontalAlignment="Left" ToolTip="Nazwa leku" mah:TextBoxHelper.Watermark="Nazwa leku"  Name="tbSettingName" Height="20px" Width="200px"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Left"  ToolTip="Substancja aktywna" mah:TextBoxHelper.Watermark="Substancja aktywna"  Name="tbSettingActiveSubstance" Height="20px" Width="200px"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Left"  ToolTip="Jednostka" mah:TextBoxHelper.Watermark="Jednostka"  Name="tbSettingUnit" Height="20px" Width="200px"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Left"  ToolTip="Ilość w opakowaniu" mah:TextBoxHelper.Watermark="Ilość w opakowaniu"  Name="tbSettingQuantityInPackage" Height="20px" Width="200px"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Left" ToolTip="Dawka"  mah:TextBoxHelper.Watermark="Dawka"  Name="tbSettingDose" Height="20px" Width="200px"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Left"  ToolTip="Czy na receptę" mah:TextBoxHelper.Watermark="Czy na receptę"  Name="tbSettingIsPrescribed" Height="20px" Width="200px"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <TextBox Grid.Row="1" HorizontalAlignment="Left" ToolTip="Opis" mah:TextBoxHelper.Watermark="Opis"  Name="tbSettingDescription" Height="178px" Width="250px"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Left"  ToolTip="Cena" mah:TextBoxHelper.Watermark="Cena" Name="tbSettingPrice" Height="20px" Width="200px"/>
+            </StackPanel>
+
+            <Button VerticalAlignment="Bottom" Width="100px" Height="50px" Name="btnSettingSave" Content="Zapisz" Margin="5 5 5 10"/>
+
+            <Button VerticalAlignment="Bottom" Width="100px" Height="50px" Name="btnSettingAddNew" Content="Dodaj nowy" Margin="5 5 5 10"/>
+
+        </StackPanel>
 
     </Grid>
 </catel:UserControl>

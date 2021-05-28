@@ -34,7 +34,8 @@
                         Unit = values[2],
                         QuantityInPackage = values[3],
                         Dose = values[4],
-                        IsPrescribed = values[5]
+                        IsPrescribed = values[5],
+                        Description = values[9]
                     });
                 }
             }
