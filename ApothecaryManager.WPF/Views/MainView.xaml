@@ -11,32 +11,98 @@
     <Grid x:Name="Main_Grid" Margin="5" Background="#4d8f6b">
         <!-- MAIN GRID COLUMNS -->
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300px"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
         <!-- MAIN GRID ROWS -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="5px"/>
-            <RowDefinition MinHeight="180px" Height="1*"/>
+            <RowDefinition Height="68px"/>
+            <RowDefinition Height="68px"/>
+            <RowDefinition Height="68px"/>
+            <RowDefinition Height="68px"/>
+            <RowDefinition Height="68px"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition MinHeight="200px" Height="1*"/>
         </Grid.RowDefinitions>
 
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="#4d8f6b"/>
 
-        <Button Name="btnHome" Command="{Binding Home}" Content="Strona Główna"  Grid.Row="0" Grid.Column="0" Margin="5 5 5 5"/>
+        <mah:Tile Title="Strona główna"
+               Margin="2" Grid.Row="0" Grid.Column="0"
+               Width="296px" Height="64px"
+               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
+               Background="DarkSeaGreen"
+               HorizontalTitleAlignment="Right"
+               HorizontalContentAlignment="Left"
+               Command="{Binding Home}">
+            <iconPacks:PackIconModern
+                              Margin="10 0 0 0"
+                              Width="40"
+                              Height="40px"
+                              Kind="Home"/>
+        </mah:Tile>
 
-        <Button Name="btnSale" Command="{Binding Sale}" Content="Sprzedaż"  Grid.Row="1" Grid.Column="0" Margin="5 5 5 5"/>
 
-        <Button Name="btnDatabase" Command="{Binding Database}" Content="Baza leków" Grid.Row="2" Grid.Column="0" Margin="5 5 5 5"/>
+        <mah:Tile Title="Sprzedaż"
+               Margin="2" Grid.Row="1" Grid.Column="0"
+               Width="296px" Height="64px"
+               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
+               Background="DarkSeaGreen"
+               HorizontalTitleAlignment="Right"
+               HorizontalContentAlignment="Left"
+               Command="{Binding Sale}">
+            <iconPacks:PackIconModern
+                              Margin="10 0 0 0"
+                              Width="40"
+                              Height="40px"
+                              Kind="Cart"/>
+        </mah:Tile>
 
-        <Button Name="btnInventory" Command="{Binding Inventory}" Content="Inwentarz" Grid.Row="3" Grid.Column="0" Margin="5 5 5 5"/>
+        <mah:Tile Title="Baza leków"
+               Margin="2" Grid.Row="2" Grid.Column="0"
+               Width="296px" Height="64px"
+               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
+               Background="DarkSeaGreen"
+               HorizontalTitleAlignment="Right"
+               HorizontalContentAlignment="Left"
+               Command="{Binding Database}">
+            <iconPacks:PackIconModern
+                              Margin="10 0 0 0"
+                              Width="40"
+                              Height="40px"
+                              Kind="Database"/>
+        </mah:Tile>
 
-        <Button Name="btnHistory" Command="{Binding History}" Content="Statystyki/Historia transakcji" Grid.Row="4" Grid.Column="0" Margin="5 5 5 5"/>
+        <mah:Tile Title="Inwentarz"
+               Margin="2" Grid.Row="3" Grid.Column="0"
+               Width="296px" Height="64px"
+               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
+               Background="DarkSeaGreen"
+               HorizontalTitleAlignment="Right"
+               HorizontalContentAlignment="Left"
+               Command="{Binding Inventory}">
+            <iconPacks:PackIconModern
+                              Margin="10 0 0 0"
+                              Width="40"
+                              Height="40px"
+                              Kind="List"/>
+        </mah:Tile>
+
+        <mah:Tile Title="Historia transakcji"
+               Margin="2" Grid.Row="4" Grid.Column="0"
+               Width="296px" Height="64px"
+               mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
+               Background="DarkSeaGreen"
+               HorizontalTitleAlignment="Right"
+               HorizontalContentAlignment="Left"
+               Command="{Binding History}">
+            <iconPacks:PackIconModern
+                              Margin="10 0 0 0"
+                              Width="40"
+                              Height="40px"
+                              Kind="Book"/>
+        </mah:Tile>
 
         <views:StatsView Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="7"/>
 
@@ -45,5 +111,5 @@
         <views:SessionView Grid.Column="0" Grid.Row="6"/>
 
     </Grid>
-    
+
 </catel:UserControl>

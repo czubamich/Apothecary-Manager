@@ -4,23 +4,17 @@
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls">
 
-    <Grid HorizontalAlignment="Right">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <StackPanel x:Name="stackPanel" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 4 4">
+        <TextBlock Text="Receiving automatic updates: " />
+        <TextBlock Text="{Binding EnableAutomaticUpdates}" />
 
-        <StackPanel x:Name="stackPanel" Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock Text="Receiving automatic updates: " />
-            <TextBlock Text="{Binding EnableAutomaticUpdates}" />
+        <Separator Margin="3,0,3,0" Width="{Binding ElementName=stackPanel, Path=ActualHeight}">
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Separator.LayoutTransform>
+        </Separator>
 
-            <Separator Margin="3,0,3,0" Width="{Binding ElementName=stackPanel, Path=ActualHeight}">
-                <Separator.LayoutTransform>
-                    <RotateTransform Angle="90" />
-                </Separator.LayoutTransform>
-            </Separator>
-
-            <TextBlock Text="Some other info" />
-        </StackPanel>
-    </Grid>
+        <TextBlock Text="Some other info" />
+    </StackPanel>
 
 </catel:UserControl>

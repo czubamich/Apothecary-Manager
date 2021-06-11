@@ -24,7 +24,7 @@
             </DataGrid>
         </Grid>
 
-        <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="red"/>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="#4d8f6b"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
 
