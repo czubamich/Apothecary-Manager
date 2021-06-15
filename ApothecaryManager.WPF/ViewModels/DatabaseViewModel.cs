@@ -14,6 +14,8 @@
     using System.Windows.Controls;
     using System.Windows;
     using System;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
     public class DatabaseViewModel : ViewModelBase
     {
@@ -23,10 +25,14 @@
         private string _textName;
         public string TextName
         {
-            get { return _textName; }
+            get { return this._textName; }
             set
             {
-                _textName = value;
+                if (this._textName != value)
+                {
+                    this._textName = value;
+                    OnPropertyChanged("TextName");
+                }
             }
         }
 
@@ -42,14 +48,18 @@
             get { return _selectedRecord; }
             set
             {
-                _selectedRecord = value;
-                MessageBox.Show(value.Name + ", " + value.Description);
-                ChangeName();
+                if(_selectedRecord != value)
+                {
+                    _selectedRecord = value;
+                    OnPropertyChanged("SelectedRecord");
+                    TextName = SelectedRecord.Name;
+                }
             }
         }
 
         public void ChangeName()
         {
+            //MessageBox.Show(SelectedRecord.Name + ", " + SelectedRecord.Description);
             TextName = SelectedRecord.Name;
         }
 
@@ -72,6 +82,7 @@
                         QuantityInPackage = values[3],
                         Dose = values[4],
                         IsPrescribed = values[5],
+                        Price = values[8],
                         Description = values[9]
                     });
                 }
@@ -100,6 +111,14 @@
             // TODO: unsubscribe from events here
 
             await base.CloseAsync();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         }
     }
 }

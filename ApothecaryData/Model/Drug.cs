@@ -40,5 +40,8 @@ namespace ApothecaryManager.Data.Model
 
         [Column(TypeName = "varchar(50)")]
         public string IsPrescribed { get; set; }
+
+        [Column(TypeName = "varchar(50)")]
+        public string Price { get; set; }
     }
 }
