@@ -27,7 +27,7 @@ namespace ApothecaryManager.Data.Model
         [JsonIgnore]
         [ForeignKey("Category")]
         public int? CategoryRefId { get; set; }
-        public Category Category { get; set; }
+        public string Category { get; set; }
 
         [Column(TypeName = "varchar(50)")]
         public string Unit { get; set; }

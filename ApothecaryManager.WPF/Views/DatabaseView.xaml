@@ -20,7 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="InventoryDataGrid" Grid.Row="0" Grid.Column="0" IsReadOnly="True" SelectionMode="Single" CanUserAddRows="False" CanUserSortColumns="True" ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedRecord, Mode=TwoWay}">
+            <DataGrid x:Name="InventoryDataGrid" Grid.Row="0" Grid.Column="0" ColumnWidth="Auto" IsReadOnly="True" SelectionMode="Single" CanUserAddRows="False" CanUserSortColumns="True" ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedRecord, Mode=TwoWay}">
             </DataGrid>
         </Grid>
 

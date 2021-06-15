@@ -69,6 +69,7 @@
 
             using (var reader = new StreamReader("leki.tsv"))
             {
+                int i = 0;
                 string headerLine = reader.ReadLine();
                 while (!reader.EndOfStream)
                 {
@@ -77,15 +78,18 @@
 
                     Products.Add(new Drug()
                     {
+                        Id = i,
                         Name = values[0],
                         ActiveSubstance = values[1],
                         Unit = values[2],
                         QuantityInPackage = values[3],
                         Dose = values[4],
                         IsPrescribed = values[5],
+                        Category = values[7],
                         Price = values[8],
                         Description = values[9]
                     });
+                    i++;
                 }
             }
 
