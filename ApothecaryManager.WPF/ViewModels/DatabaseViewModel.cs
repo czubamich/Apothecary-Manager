@@ -69,6 +69,7 @@
 
             using (var reader = new StreamReader("leki.tsv"))
             {
+                string headerLine = reader.ReadLine();
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
