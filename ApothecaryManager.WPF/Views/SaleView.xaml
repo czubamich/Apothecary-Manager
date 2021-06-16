@@ -8,6 +8,7 @@
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -58,7 +59,7 @@
                 <Button Padding="10" Margin="3" Content="Pokaż wszystkie" Command="{Binding ShowAll}"></Button>
             </StackPanel>
         </StackPanel>
-        <!--<ListBox VerticalAlignment="Top" Grid.Column="1" ItemsSource="{Binding Source={StaticResource productsWithoutBlank}}" HorizontalContentAlignment="Stretch" AlternationCount="2">
+        <ListBox x:Name="SaleListBox" VerticalAlignment="Top" Grid.Column="1" ItemsSource="{Binding Products}" HorizontalContentAlignment="Stretch" AlternationCount="2" SelectedItem="{Binding Path=SelectedRecord, Mode=TwoWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -82,25 +83,33 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0" Grid.Column="0">
                             <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
-                            <TextBlock Padding="3" FontSize="14" Text="{Binding Description}"></TextBlock>
+                            <TextBlock Padding="3" FontSize="14" Text="{Binding Description}" TextWrapping="Wrap" Width="200px"></TextBlock>
                             <StackPanel Margin="3" Orientation="Horizontal">
-                                <TextBlock FontSize="12" FontWeight="Bold" Text="Category: "></TextBlock>
+                                <TextBlock FontSize="12" FontWeight="Bold" Text="Kategoria: "></TextBlock>
                                 <TextBlock FontSize="12" Text="{Binding Category}"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="5">
-                            <TextBlock FontSize="18" FontWeight="Bold" Text="Price: "></TextBlock>
+                            <TextBlock FontSize="18" FontWeight="Bold" Text="Cena: "></TextBlock>
                             <TextBlock FontSize="18" Text="{Binding Price, StringFormat=N2}"></TextBlock>
                             <TextBlock FontSize="18" Text="zł"></TextBlock>
                         </StackPanel>
-                        <Button Width="70" FontSize="14" Grid.Row="0" Grid.Column="2" Padding="10" Command="{Binding AddProduct, Source={StaticResource cart}}" CommandParameter="{Binding}">
+                        <Button Width="50" Height="50" FontSize="14" Grid.Row="0" Grid.Column="2" Padding="10">
                             <Button.Content>
-                                <Image Source="/ShopManager;component/Views/Images/cart.png" Stretch="UniformToFill"></Image>
+                                <Image Source="/Images/cart.png" Stretch="UniformToFill"></Image>
                             </Button.Content>
                         </Button>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>-->
+        </ListBox>
+
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <TextBlock TextAlignment="Center" FontSize="25" FontWeight="Bold" Text="Koszyk"></TextBlock>
+            <ListBox>
+                
+            </ListBox>
+        </StackPanel>
+
     </Grid>
 </catel:UserControl>
