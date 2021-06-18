@@ -96,7 +96,8 @@
                         </StackPanel>
                         <Button Width="50" Height="50" FontSize="14" Grid.Row="0" Grid.Column="2" Padding="10">
                             <Button.Content>
-                                <Image Source="/Images/cart.png" Stretch="UniformToFill"></Image>
+                                <iconPacks:PackIconModern
+                                  Kind="Cart"/>
                             </Button.Content>
                         </Button>
                     </Grid>
@@ -107,7 +108,7 @@
         <StackPanel Grid.Row="0" Grid.Column="2">
             <TextBlock TextAlignment="Center" FontSize="25" FontWeight="Bold" Text="Koszyk"></TextBlock>
             <ListBox>
-                
+
             </ListBox>
         </StackPanel>
 
