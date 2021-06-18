@@ -29,5 +29,10 @@ namespace ApothecaryManager.Data.Model
         public bool isRefundable { get; set; }
 
         public ICollection<SaleDetail> SaleDetails { get; set; }
+
+        public override string ToString()
+        {
+            return this.Id + ", " + this.Date + ", " + this.State;
+        }
     }
 }
