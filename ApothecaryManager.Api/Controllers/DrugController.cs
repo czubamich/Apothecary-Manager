@@ -71,14 +71,19 @@ namespace ApothecaryManager.WebApi.Controllers
         public IActionResult Put(int id, [FromBody] DrugModel item)
         {
             var val = _mapper.Map<DrugModel, Drug>(item);
-            var element = _context.Drugs.First(x => x.Id == id);
-            if (element == null)
+            var element = _context.Drugs.FirstOrDefault(x => x.Id == id);
+            if (element != null)
+            {
+                element.ActiveSubstance = val.ActiveSubstance ?? element.ActiveSubstance;
+
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            else
+            {
                 return NotFound();
-
-
-            _context.SaveChanges();
-
-            return Ok();
+            }
         }
 
         // DELETE api/<AccountController>/5

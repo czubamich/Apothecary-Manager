@@ -14,7 +14,7 @@ using AutoMapper;
 
 namespace ApothecaryManager.WebApi.Controllers
 {
-    //TODO: Inventory controller
+    //TODO: Futher data validation
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
@@ -45,24 +45,40 @@ namespace ApothecaryManager.WebApi.Controllers
 
         // POST api/<AccountController>
         [HttpPost]
-        public void Post([FromBody] SupplierModel item)
+        public IActionResult Post([FromBody] SupplierModel item)
         {
-            Supplier val = _mapper.Map<SupplierModel, Supplier>(item);
+            var val = _mapper.Map<SupplierModel, Supplier>(item);
 
-            throw new NotImplementedException();
+            _context.Suppliers.Add(val);
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         [HttpPut("{Id}")]
-        public void Put(int id, [FromBody] SupplierModel item)
+        public IActionResult Put(int id, [FromBody] SupplierModel item)
         {
-            throw new NotImplementedException();
+            var val = _mapper.Map<SupplierModel, Supplier>(item);
+            var element = _context.Drugs.First(x => x.Id == id);
+            if (element == null)
+                return NotFound();
+
+            _context.SaveChanges();
+            return Ok();
         }
 
         // DELETE api/<AccountController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            var element = _context.Suppliers.First(x => x.Id == id);
+            if (element == null)
+                return NotFound();
+
+            _context.Suppliers.Remove(element);
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }

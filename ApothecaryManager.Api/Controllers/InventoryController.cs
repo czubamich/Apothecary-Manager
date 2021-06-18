@@ -71,6 +71,7 @@ namespace ApothecaryManager.WebApi.Controllers
         {
             var val = _mapper.Map<InventoryModel, Inventory>(item);
             var element = _context.Inventories.First(x => x.Id == id);
+
             if (id == null)
                 return NotFound();
 
