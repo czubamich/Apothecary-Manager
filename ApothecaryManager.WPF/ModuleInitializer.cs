@@ -1,6 +1,8 @@
 ﻿using Catel.IoC;
 using ApothecaryManager.WPF.Services;
 using Orchestra.Services;
+using ApothecaryManager.WPF.Services.Interfaces;
+using ApothecaryManager.WPF.Helpers;
 
 /// <summary>
 /// Used by the ModuleInit. All code inside the Initialize method is ran as soon as the assembly is loaded.
@@ -16,5 +18,7 @@ public static class ModuleInitializer
 
         serviceLocator.RegisterType<IMahAppsService, MahAppsService>();
         serviceLocator.RegisterType<IApplicationInitializationService, ApplicationInitializationService>();
+        serviceLocator.RegisterInstance<ISessionService>(new SessionService());
+        serviceLocator.RegisterInstance<ApiHelper>(new ApiHelper());
     }
 }
