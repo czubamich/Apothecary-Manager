@@ -35,6 +35,12 @@
         public Command Inventory { get; private set; }
         public Command History { get; private set; }
 
+        public HomeViewModel homeViewModel = new HomeViewModel();
+        public DatabaseViewModel databaseViewModel = new DatabaseViewModel();
+        public SaleViewModel saleViewModel = new SaleViewModel();
+        public InventoryViewModel inventoryViewModel = new InventoryViewModel();
+        public HistoryViewModel historyViewModel = new HistoryViewModel();
+
         public static readonly PropertyData CurrentPageProperty = RegisterProperty("CurrentPage", typeof(IViewModel), null);
 
         public override string Title { get { return "Apothecary Manager"; } }
@@ -44,6 +50,7 @@
         protected override async Task InitializeAsync()
         {
             await base.InitializeAsync();
+            CurrentPage = homeViewModel;
         }
 
         protected override async Task CloseAsync()
@@ -53,24 +60,24 @@
 
         private void HandleHomeCommand()
         {
-            this.CurrentPage = new HomeViewModel();
+            this.CurrentPage = homeViewModel;
         }
 
         private void HandleSaleCommand()
         {
-            this.CurrentPage = new SaleViewModel();
+            this.CurrentPage = saleViewModel;
         }
         private void HandleDatabaseCommand()
         {
-            this.CurrentPage = new DatabaseViewModel();
+            this.CurrentPage = databaseViewModel;
         }
         private void HandleInventoryCommand()
         {
-            this.CurrentPage = new InventoryViewModel();
+            this.CurrentPage = inventoryViewModel;
         }
         private void HandleHistoryCommand()
         {
-            this.CurrentPage = new HistoryViewModel();
+            this.CurrentPage = historyViewModel;
         }
 
     }
