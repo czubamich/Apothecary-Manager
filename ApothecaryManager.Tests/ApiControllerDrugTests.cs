@@ -15,6 +15,7 @@ using ApothecaryManager.Data.Model;
 using System.Web.Http.Results;
 using Microsoft.AspNetCore.Routing;
 using System.Web.Http.Routing;
+using System.Linq;
 
 namespace ApothecaryManager.Tests
 {
