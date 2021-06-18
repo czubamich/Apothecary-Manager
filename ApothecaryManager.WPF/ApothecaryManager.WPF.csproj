@@ -14,6 +14,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\NewFolder1\**" />
+    <Compile Remove="Views\NewFolder\**" />
+    <EmbeddedResource Remove="Views\NewFolder1\**" />
+    <EmbeddedResource Remove="Views\NewFolder\**" />
+    <None Remove="Views\NewFolder1\**" />
+    <None Remove="Views\NewFolder\**" />
+    <Page Remove="Views\NewFolder1\**" />
+    <Page Remove="Views\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Catel.Core" Version="5.12.12" />
     <PackageReference Include="Catel.Fody" Version="4.7.0">
       <PrivateAssets>all</PrivateAssets>
@@ -24,12 +35,6 @@
     <PackageReference Include="MahApps.Metro.IconPacks.Unicons" Version="4.8.0" />
     <PackageReference Include="ModuleInit.Fody" Version="2.1.1" />
     <PackageReference Include="Orchestra.Shell.MahApps" Version="6.2.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Views\NewFolder1\" />
-    <Folder Include="Views\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>
