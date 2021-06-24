@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace ApothecaryManager.WPF.Services.Interfaces
 {
-    interface ISessionService
+    public interface ISessionService
     {
         bool LoggedIn { get; }
         User LoggedUser { get; }
+        DateTime LoginTimestamp { get; }
 
+        Task<bool> ShowDialogAsync();
         void Setup();
         bool Login(string username, string password);
         bool Refresh();

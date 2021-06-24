@@ -18,7 +18,12 @@ public static class ModuleInitializer
 
         serviceLocator.RegisterType<IMahAppsService, MahAppsService>();
         serviceLocator.RegisterType<IApplicationInitializationService, ApplicationInitializationService>();
-        serviceLocator.RegisterInstance<ISessionService>(new SessionService());
-        serviceLocator.RegisterInstance<ApiHelper>(new ApiHelper());
+
+        var apiHelper = new ApiHelper();
+        serviceLocator.RegisterInstance<ApiHelper>(apiHelper);
+        serviceLocator.RegisterInstance<ISessionService>(new SessionService(apiHelper));
+
+
+
     }
 }
