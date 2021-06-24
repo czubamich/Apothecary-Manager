@@ -4,6 +4,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using ApothecaryManager.WPF.Services.Interfaces;
     using Catel;
     using Catel.IoC;
     using Catel.Logging;
@@ -39,6 +40,11 @@
             {
                 InitializePerformanceAsync
             });
+
+            var sessionService =_serviceLocator.ResolveType<ISessionService>();
+            sessionService.Setup();
+            await sessionService.ShowDialogAsync();
+
         }
 
         private async Task InitializeCommandsAsync()
@@ -72,8 +78,6 @@
             var serviceLocator = _serviceLocator;
 
             serviceLocator.RegisterType<IAboutInfoService, AboutInfoService>();
-
-            //throw new Exception("this is a test exception");
         }
     }
 }

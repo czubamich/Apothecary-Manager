@@ -42,7 +42,7 @@ namespace ApothecaryManager.WPF
 
             //var serviceLocator = ServiceLocator.Default;
             var shellService = serviceLocator.ResolveType<IShellService>();
-            shellService.CreateAsync<MainShellWindowView>();
+            await shellService.CreateAsync<MainShellWindowView>();
 
             base.OnStartup(e);
         }
