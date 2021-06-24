@@ -4,7 +4,11 @@
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" xmlns:local="clr-namespace:ApothecaryManager.WPF.Views">
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" xmlns:local="clr-namespace:ApothecaryManager.WPF.Views" xmlns:local1="clr-namespace:ApothecaryManager.WPF.Helpers">
+    <UserControl.Resources>
+        <local1:MathConverter x:Key="MathConverter"/>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -15,25 +19,44 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ListView Margin="10" FontSize="20" ItemsSource="{Binding Transactions, Mode=TwoWay}">
+        <ListView Name="lvMain" Margin="10" FontSize="20" ItemsSource="{Binding Transactions, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-
-                        <Expander Header="{Binding Path=Id}">
-                            <TextBlock Text="XD" />
+                        <Expander>
+                            <Expander.Header>
+                                <Grid HorizontalAlignment="Stretch" Width="{Binding Path=ActualWidth, ElementName=lvMain, Converter={StaticResource MathConverter}, ConverterParameter=((@VALUE)*95/100)}" Height="50" >
+                                    <TextBlock>
+                                    <Run Text="ID: "/>
+                                    <Run Text="{Binding Id}"/>
+                                    <Run Text=", Data:"/>
+                                    <Run Text="{Binding Date}"/>
+                                    <Run Text=", Sprzedawca:"/>
+                                    <Run Text="{Binding SoldBy.FirstName}"/>
+                                    <Run Text="{Binding SoldBy.LastName}"/>
+                                    </TextBlock>
+                                </Grid>
+                            </Expander.Header>
+                            <ListView Name="lvDetails" Margin="10" FontSize="10" ItemsSource="{Binding SaleDetails, Mode=TwoWay}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Grid>
+                                                <TextBlock>
+                                                    <Run Text="Id:"/>
+                                                    <Run Text="{Binding Id}"/>
+                                                    <Run Text="Recepta:"/>
+                                                    <Run Text="{Binding Prescription}"/>
+                                                </TextBlock>
+                                            </Grid>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </Expander>
-
-                        <TextBlock Text="Id: " />
-                        <TextBlock Text="{Binding Path=Id}" FontWeight="Bold" />
-                        <TextBlock Text=", " />
-                        <TextBlock Text="Date: " />
-                        <TextBlock Text="{Binding Path=Date}"  FontWeight="Bold" />
-                        
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </Grid>
 </catel:UserControl>
