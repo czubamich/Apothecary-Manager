@@ -39,16 +39,12 @@ namespace ApothecaryManager.WPF.Helpers
 
         public async Task<AuthenticatedUser> Authenticate(string username, string password)
         {
-            using (HttpResponseMessage response = await ApiClient.GetAsync("now"))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    var a = response.Content.ReadAsStringAsync();
-                }
-            }
+            if (username != "admin" || password != "password")
+                return null;
 
-
-            return null;
+            var dummy = new AuthenticatedUser();
+            dummy.userId = 0;
+            return dummy;
         }
     }
 }
