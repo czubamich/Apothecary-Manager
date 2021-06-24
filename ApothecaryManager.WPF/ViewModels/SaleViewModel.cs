@@ -18,6 +18,8 @@
 
         public ObservableCollection<Drug> Products { get; set; }
 
+        public ObservableCollection<Drug> Cart { get; set; }
+
         private Drug _selectedRecord;
         public Drug SelectedRecord
         {
@@ -34,6 +36,8 @@
         public SaleViewModel(/* dependency injection here */)
         {
             Products = new ObservableCollection<Drug>();
+
+            Cart = new ObservableCollection<Drug>();
 
             using (var reader = new StreamReader("leki.tsv"))
             {
@@ -60,6 +64,12 @@
                     i++;
                 }
             }
+
+            Cart.Add(Products[9]);
+            Cart.Add(Products[15]);
+            Cart.Add(Products[34]);
+            Cart.Add(Products[56]);
+
         }
 
         public override string Title { get { return "Apothecary Manager"; } }
