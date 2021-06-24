@@ -152,6 +152,7 @@
             </ListBox>
 
             <TextBlock TextAlignment="Center" FontSize="25" FontWeight="Bold" Text="Łącznie: 88,16 PLN"></TextBlock>
+            <Button Content="Zakończ"/>
 
         </StackPanel>
 
