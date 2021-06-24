@@ -20,7 +20,7 @@
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Fill="red"/>
         <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Fill="#4d8f6b"/>
 
-        <TextBlock FontSize="50">Strona główna</TextBlock>
+        <TextBlock FontSize="50">Tu miały być wykresy itd ale zabrakło czasu</TextBlock>
 
         <local:LogView Grid.Column="0" Grid.Row="2"/>
 
