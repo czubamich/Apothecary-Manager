@@ -4,7 +4,12 @@
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" xmlns:local1="clr-namespace:ApothecaryManager.WPF.Helpers">
+
+    <UserControl.Resources>
+        <local1:MathConverter x:Key="MathConverter"/>
+    </UserControl.Resources>
+
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -50,9 +55,13 @@
                 <Separator Margin="20"></Separator>
                 <CheckBox IsChecked="{Binding ProductFilter.ByCategory}" x:Name="byCategory"  FontWeight="Bold" Content="Po kategorii"></CheckBox>
                 <ComboBox SelectedIndex="{Binding ProductFilter.Category}"  IsEnabled="{Binding IsChecked, ElementName=byCategory}" Margin="2">
-                    <ComboBoxItem>Food</ComboBoxItem>
-                    <ComboBoxItem>Clothes</ComboBoxItem>
-                    <ComboBoxItem>Electronics</ComboBoxItem>
+                    <ComboBoxItem>diet supplement</ComboBoxItem>
+                    <ComboBoxItem>painkillers</ComboBoxItem>
+                    <ComboBoxItem>antiallergic</ComboBoxItem>
+                    <ComboBoxItem>antidepressants</ComboBoxItem>
+                    <ComboBoxItem>cardiovascular</ComboBoxItem>
+                    <ComboBoxItem>hematopoietic</ComboBoxItem>
+                    <ComboBoxItem>other</ComboBoxItem>
                 </ComboBox>
                 <Separator Margin="20"></Separator>
                 <Button Padding="10" Margin="3" Content="Szukaj" Command="{Binding ShowFiltered }"></Button>
@@ -105,11 +114,45 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Row="0" Grid.Column="2">
+        <StackPanel Name="sPanel" Grid.Row="0" Grid.Column="2">
             <TextBlock TextAlignment="Center" FontSize="25" FontWeight="Bold" Text="Koszyk"></TextBlock>
-            <ListBox>
+            <ListBox ItemsSource="{Binding Cart}" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" Height="{Binding Path=ActualHeight, ElementName=sPanel, Converter={StaticResource MathConverter}, ConverterParameter=((@VALUE)*80/100)}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="FontFamily" Value="Arial"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="FontFamily" Value="Arial"/>
+                                </Style>
 
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock Padding="3" FontSize="12" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="5">
+                                <TextBlock FontSize="10" Text="Cena: "></TextBlock>
+                                <TextBlock FontSize="10" Text="{Binding Price, StringFormat=N2}"></TextBlock>
+                                <TextBlock FontSize="10" Text="zł"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
+
+            <TextBlock TextAlignment="Center" FontSize="25" FontWeight="Bold" Text="Łącznie: 88,16 PLN"></TextBlock>
+
         </StackPanel>
 
     </Grid>
