@@ -14,7 +14,7 @@
             </Separator.LayoutTransform>
         </Separator>
 
-        <TextBlock Text="Some other info" />
+        <TextBlock Text="CONNECTED" />
     </StackPanel>
 
 </catel:UserControl>
