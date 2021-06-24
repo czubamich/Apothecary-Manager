@@ -22,18 +22,18 @@
 
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="#4d8f6b"/>
 
-        <TextBlock x:Name="Logged_User" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Grzegorz Brzęczyszczykiewicz" TextWrapping="NoWrap" FontSize="16px"/>
+        <TextBlock x:Name="Logged_User" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Michael Czuba" TextWrapping="NoWrap" FontSize="16px"/>
 
-        <TextBlock x:Name="User_Position" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="USER_POSITION" TextWrapping="Wrap" FontSize="12px" Opacity="0.35"/>
+        <TextBlock x:Name="User_Position" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Admin" TextWrapping="Wrap" FontSize="12px" Opacity="0.35"/>
 
         <TextBlock x:Name="Income_Today_Text" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Dzienny utarg: " TextWrapping="Wrap" FontSize="16px"/>
-        <TextBlock x:Name="Income_Today" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="2137 PLN" TextWrapping="Wrap" FontSize="16px" HorizontalAlignment="Right"/>
+        <TextBlock x:Name="Income_Today" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="NULL PLN" TextWrapping="Wrap" FontSize="16px" HorizontalAlignment="Right"/>
 
         <TextBlock x:Name="Income_Month_Text" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Miesięczny utarg: " TextWrapping="Wrap" FontSize="16px"/>
-        <TextBlock x:Name="Income_Month" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="213700 PLN" TextWrapping="Wrap" FontSize="16px" HorizontalAlignment="Right"/>
+        <TextBlock x:Name="Income_Month" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="NULL PLN" TextWrapping="Wrap" FontSize="16px" HorizontalAlignment="Right"/>
 
         <TextBlock x:Name="Session_Length_text" Grid.Row="5" Grid.Column="0" Text="Długość sesji: " TextWrapping="Wrap" FontSize="10px" VerticalAlignment="Bottom" Opacity="0.35"/>
-        <TextBlock x:Name="Session_Length" Grid.Row="5" Grid.Column="0" Text="112 min" TextWrapping="Wrap" FontSize="10px" Margin="75,0,0,0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Opacity="0.35"/>
+        <TextBlock x:Name="Session_Length" Grid.Row="5" Grid.Column="0" Text="12 min" TextWrapping="Wrap" FontSize="10px" Margin="75,0,0,0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Opacity="0.35"/>
 
     </Grid>
 </catel:UserControl>
