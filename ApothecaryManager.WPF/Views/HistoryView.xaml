@@ -34,6 +34,8 @@
                                     <Run Text=", Sprzedawca:"/>
                                     <Run Text="{Binding SoldBy.FirstName}"/>
                                     <Run Text="{Binding SoldBy.LastName}"/>
+                                        <Run Text=", Status:"/>
+                                    <Run Text="{Binding State}"/>
                                     </TextBlock>
                                 </Grid>
                             </Expander.Header>
@@ -44,9 +46,15 @@
                                             <Grid>
                                                 <TextBlock>
                                                     <Run Text="Id:"/>
-                                                    <Run Text="{Binding Id}"/>
+                                                    <Run Text="{Binding Drug.Id}"/>
+                                                    <Run Text="{Binding Drug.Name}"/>
+                                                    <Run Text="Ilość:"/>
+                                                    <Run Text="{Binding Quantity}"/>
                                                     <Run Text="Recepta:"/>
-                                                    <Run Text="{Binding Prescription}"/>
+                                                    <Run Text="{Binding Prescription.BarCode}"/>
+                                                    <Run Text="Zniżka:"/>
+                                                    <Run Text="{Binding Discount}"/>
+                                                    <Run Text="%"/>
                                                 </TextBlock>
                                             </Grid>
                                         </WrapPanel>
