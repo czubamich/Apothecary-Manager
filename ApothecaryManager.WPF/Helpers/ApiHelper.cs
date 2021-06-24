@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Configuration;
 using ApothecaryManager.WPF.Models;
+using System.Net;
+using System.Net.Security;
 
 namespace ApothecaryManager.WPF.Helpers
 {
@@ -21,29 +23,32 @@ namespace ApothecaryManager.WPF.Helpers
 
         private void InitializeClient()
         {
-            string api = ConfigurationManager.AppSettings["ApiAddress"];
+            string api = "http://localhost:42937/api/";//Properties.Settings.Default.ApiAddress;
 
             ApiClient = new HttpClient();
             ApiClient.BaseAddress = new Uri(api);
             ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, errors) =>
+            {
+                // local dev, just approve all certs
+                if (true) return true;
+                return errors == SslPolicyErrors.None;
+            };
         }
 
-        private async Task Authenticate(string username, string password)
+        public async Task<AuthenticatedUser> Authenticate(string username, string password)
         {
-            var data = new FormUrlEncodedContent(new[]
+            using (HttpResponseMessage response = await ApiClient.GetAsync("now"))
             {
-                new KeyValuePair<string, string>("username", username),
-                new KeyValuePair<string, string>("password", password),
-            });
-
-            using (HttpResponseMessage response = await ApiClient.PostAsync("/Identity/login", data))
-            {
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
-                    var result = await response.Content.ReadAsAsync<AuthenticatedUser>();
+                    var a = response.Content.ReadAsStringAsync();
                 }
             }
+
+
+            return null;
         }
     }
 }
