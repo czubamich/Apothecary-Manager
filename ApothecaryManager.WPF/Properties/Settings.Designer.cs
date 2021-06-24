@@ -25,7 +25,7 @@ namespace ApothecaryManager.WPF.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:42937/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:42937/api")]
         public string ApiAddress {
             get {
                 return ((string)(this["ApiAddress"]));
